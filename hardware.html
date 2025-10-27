@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.24">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>hardware – Gaurav Gaur</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Gaurav Gaur">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://1gaurg1.github.io/design docs/images/jannsen mechanism.png">
+<meta property="og:site_name" content="Gaurav Gaur">
+<meta property="og:image:height" content="420">
+<meta property="og:image:width" content="315">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Gaurav Gaur</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./hardware.html" aria-current="page"> 
+<span class="menu-text">Hardware Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./software.html"> 
+<span class="menu-text">Software Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#jansen-mechanism-for-canine-prosthetics" id="toc-jansen-mechanism-for-canine-prosthetics" class="nav-link active" data-scroll-target="#jansen-mechanism-for-canine-prosthetics">Jansen Mechanism for Canine Prosthetics</a></li>
+  <li><a href="#autonomous-rover-mechanical-redesign" id="toc-autonomous-rover-mechanical-redesign" class="nav-link" data-scroll-target="#autonomous-rover-mechanical-redesign">Autonomous Rover Mechanical Redesign</a></li>
+  <li><a href="#corecare-medication-management-and-monitoring" id="toc-corecare-medication-management-and-monitoring" class="nav-link" data-scroll-target="#corecare-medication-management-and-monitoring">CoreCare Medication Management and Monitoring</a></li>
+  <li><a href="#fdm-speed-3d-printing" id="toc-fdm-speed-3d-printing" class="nav-link" data-scroll-target="#fdm-speed-3d-printing">FDM Speed 3D printing</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p>Welcome to my hardware project portfolio. Here, you’ll find a collection of my engineering endeavours, reflecting my passion for design, fabrication and hands-on problem-solving. These projects demonstrate my approach to engineering design, from initial concept to final implementation, with a focus on analysis and iterative improvement.</p>
+<section id="jansen-mechanism-for-canine-prosthetics" class="level1 page-columns page-full">
+<h1>Jansen Mechanism for Canine Prosthetics</h1>
+<p>As part of a course in the kinematics and dynamics of machines, my team conducted a project based around optimizing the Jansen mechanism as a suitable canine prosthetic <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Our primary motivation was to address the significant limitations we saw with existing mobility solutions, such as dog wheelchairs. These solutions often lead to further musculoskeletal issues for the animals and aren’t very effective on rough terrain. We wanted to develop something better, something that would allow for more natural movement and improve the dogs’ quality of life.</p>
+<p>Our main idea was to create a design that could be powered by the dog’s front legs and assist the rear legs, avoiding the need for any kind of surgery. This meant we had to keep the design minimally invasive and not require any surgical implantation. This reduced the complexity of our project, and helped to keep costs down and would encourage the dog to use and grow their existing muscles, which we thought was a very important element of our design.</p>
+<p>After considering various existing mechanisms, we landed on the <a href="https://en.wikipedia.org/wiki/Jansen%27s_linkage"><strong>Jansen mechanism</strong></a> [see figure 1] as our best option. It’s known for its efficiency and the way it mimics a dog’s natural leg movement. We made some crucial modifications, though, such as adjusting the vertical path to help the dogs navigate uneven terrains, and also to optimise its torque output.</p>
+
+<!-- ::: {.custom-style}
+![d](design docs/images/jannsen mechanism.png)
+center image -->
+<!-- :::{.caption .text-center}
+Figure 1: Jansen Mechanism
+:::
+::: -->
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="design docs/images/jannsen mechanism.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Jansen Mechanism - <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></figcaption>
+</figure>
+</div>
+</div></div><p>A significant part of our work involved detailed kinematic analysis. We used <strong>vector loop equations</strong> to simulate the mechanism’s movement, which allowed us to fine-tune the link lengths and ensure the stride closely matched that of a dog. Specifically, we calculated the <em>a/b ratio</em>, which is the vertical distance of the furthest points on the path divided by the horizontal distance of the furthest points. This helped us ensure that it fell within the typical range of <strong>0.3 to 0.4</strong> [see figure 2] that you would find in a medium-sized dog’s natural gait. We ended up with a ratio of 0.38, which was within range.</p>
+<div class="custom-style">
+<p><img src="design docs/images/trajectory.png" class="img-fluid" alt="d">{width = 50%} <!-- center image --></p>
+<div class="caption text-center">
+<p>Figure 2: Trajectory of “foot” of mechansim, node 6 here</p>
+</div>
+</div>
+<p>We also performed a numerical <strong>velocity analysis</strong> [see figure 3] to see how long the leg would be in contact with the ground during one stride. Our analysis showed it would be about 40.3% of the cycle, which we were happy with as it fell within the acceptable range of <strong>33.15% - 41.48%.</strong> Finally, we conducted a <strong>force analysis</strong> and determined that the force of 198N per leg we wanted the design to be able to support could be achieved with an input torque of 4.11Nm, which is below the 7.1 Nm that a dog’s leg could provide to power the device.</p>
+<div class="custom-style">
+<p><img src="design docs/images/velocity.png" class="img-fluid" alt="d">{width = 50%} <!-- center image --></p>
+<div class="caption text-center">
+<p>Figure 3: X and Y velocity of “foot” of mechanism</p>
+</div>
+</div>
+<p>Overall, I believe we achieved our goals. The final design effectively mimics the gait of a dog, is cost-effective and could be made of a readily available plastic composite material like PLA or polycarbonate. It demonstrated how effective a linkage-based system could be in enhancing mobility for disabled dogs. I think it’s a great design and one that I am really proud to have worked on.</p>
+</section>
+<section id="autonomous-rover-mechanical-redesign" class="level1 page-columns page-full">
+<h1>Autonomous Rover Mechanical Redesign</h1>
+<p>In September 2023, I joined the Autonomous Rover Team of the University of Toronto Robotics Association. I was a general member of the mechanical design subteam, and wanted to use this project to develop my skills in CAD modelling and finite element simulation. We compete in the Intelligent Ground Vehicle Competition, held in Michigan at the end of May each year.</p>
+<p>At the beginning, we inherited our rover called Caffeine (see figure 1). Caffeine had been running, with various annual improvements and patches, for nearly 10 years. As such, issues with the rover had compounded and team leadership decided it was time to build an entirely new rover without the issues of before. This rover, which we named Espresso, is shown in figure 2.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="design docs/images/caffiene.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Caffeine, inherited rover</figcaption>
+</figure>
+</div>
+</div></div><div class="custom-style">
+<p><img src="design docs/images/espresso_full.png" class="img-fluid" alt="d"> <!-- center image --></p>
+<div class="caption text-center">
+<p>Figure 2: Full CAD model of Espresso</p>
+</div>
+</div>
+<p>The first part of the design process involved a comprehensive review of Caffeine’s problems and writing a technical specification for Espresso. This happened in the early months of the year and we successfully completed it and moved to the design phase.</p>
+<p>We designed many components in parallel, but the one I was most involved with was the chassis. After iterating through a few different candidates, we settled in a design primarily composed of t-slot aluminum extrusion. (see figure 3). This extrusion profile was chosen for its modularity and large number of compatible off-the-shelf parts, along with relative stiffness and resistance to bending deformation. Finally, we validated our design with a Finite Element simulation run using Ansys (figure 4).</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="design docs/images/espresso_chassis.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3: T-Slot extrusion chassis</figcaption>
+</figure>
+</div>
+</div></div><div class="custom-style">
+<p><img src="design docs/images/espresso_chassis_ansys.png" class="img-fluid" alt="d"> <!-- center image --></p>
+<div class="caption text-center">
+<p>Figure 4: Simulation run on chassis</p>
+</div>
+</div>
+<p>In parallel, the software team wanted a model for simulation purposes. They use the Gazebo simulator package for ROS, which requires a file type called URDF. URDF requires you to define a 3d model which corresponds to each link, and it needs you to define the mobility of each joint. To make this URDF file from the complex Solidworks assembly shown in figure 2, we needed to navigate a whole lot of poorly documented plugins on the wrong version of Solidworks. After many hours of troubleshooting and painstaking calculation to ensure that the coordinate systems matched up, we were able to define a very accurate simulation model. The simulation was a success and the software team was now ready to progress to real-world testing.</p>
+<p>More parts came together, and finally we were able to make it to the competition. However, due to schedule conflicts and exams, all the hardware tasks were done relatively late in April and May (remember, competition is at the end of May). As such, the software team did not have a test bed and testing had to be done in the few hours before competition and at competition. There were many issues with the autonomous navigation, and we weren’t able to complete the course. To add insult to injury, a hastily printed motor mount broke just a few hours before the last day of competition was to end. We patched it up with a piece of 2x4 and a bottle of super glue but it was largely in vain. While lots of progress was made, including an entirely new rover, there was much still to be done.</p>
+<p>On that note, after that competition I was promoted to lead the Mechanical design team. As lead, I quickly onboarded a crop of new members and laid out a plan for fixing the problems of last year. The main priority in the early stages was fixing the motor mount design and a few other peripheral items (for example, we had a vibration problem in the LIDAR mount). Tangentially, I have also taken on some tasks in software, particularly around navigation. The largest upcoming project is making the rover narrower. From last year, we learned that many of the issues were caused by the software team not having a test bed, so this year while narrowing the rover we do not intend for it to be out of commission for more than 2 meetings. While much is still to be done, things are looking up for the team and I am confident that we will do well at IGVC 2025.</p>
+</section>
+<section id="corecare-medication-management-and-monitoring" class="level1 page-columns page-full">
+<h1>CoreCare Medication Management and Monitoring</h1>
+<p>Through the University of Toronto Entrepreneurship Hatchery, which is the university’s startup incubator program, my team and I created a company called RapidCore. We were taken aback by the fact that up to 59% of seniors do not adhere to their prescription or treatment plan in some capacity (<span class="citation" data-cites="irshaidat2023self">Irshaidat, Gustafsson, and Norberg (<a href="#ref-irshaidat2023self" role="doc-biblioref">2023</a>)</span>). We spent time analysing the reasons behind this issue, and we came up with a solution. Our solution, which we dubbed the “CoreCare” device, is a medication management system designed for seniors. (see figure 1)</p>
+<p><img src="design docs/images/full_devic.png" class="img-fluid"></p>
+<div class="caption text-center">
+<p>Figure 1: full view of CoreCare device</p>
+</div>
+<p>First, the caregivers of the seniors purchase our corecare device and create an account on the caregiver app. This only needs to be done once. Next, an image scanner on the senior’s storage devices scans a pill bottle’s label to read dosage instructions and medication details. (see figure 2) This data is then transmitted to the caregiver app, creating a medication profile and tracking adherence. (see figure 3) Here, the setup is complete, and now the device can monitor adherence indefinitely.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="design docs/images/scanner.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: Pill bottle being scanned</figcaption>
+</figure>
+</div>
+</div></div><p>When it is time to take a dose, visual and auditory signals go off to remind seniors. The device tracks which bottles are lifted to track what medications are taken. If something is missed, an immediate notification system sends alerts to the caregiver app.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="design docs/images/phone_app.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3: Phone App interface. Note that this is only shown to the caregivers</figcaption>
+</figure>
+</div>
+</div></div><p>We went with this type of design as opposed to other “smart pillboxes” because shaping the device like a medicine cabinet usually causes minimal changes to a user’s routine. This approach was chosen due to research based around the concept of “Minimum Intervention Needed for Change.” (<span class="citation" data-cites="glasgow2014minimal">Glasgow et al. (<a href="#ref-glasgow2014minimal" role="doc-biblioref">2014</a>)</span>) This research largely concludes that solutions which are minimally invasive and disrupt people’s routines as little as possible are more likely to be adopted and maintained over the long term. As such, we used these design principles when making the CoreCare device.</p>
+<p>The preliminary design had us using off-the-shelf arduino components for prototyping and pitching. CAD was used to make the pre-production designs and renders shown. The most mechanically complex portion of this project was reviewing and deciding on manufacturing methods and estimating manufacturing cost. After literature review (cite), we decided on plastic injection molding for our housing and other plastic components. Further research led to us estimating a total manufacturing cost of one of these devices to be ~$50, assuming minimum production of ~125000 devices.</p>
+<p>The other major parts of this project which I have omitted for brevity involve writing a business plan and go-to-market strategy, and presenting a scripted pitch. From a mechanical design standpoint, there is much further work that can be done. The design is not quite optimized for injection molding yet, and the large housing can be broken into several flat pieces to be attached with cheap fasteners which would bring down production costs further. From the electronics standpoint, the camera, LED screen, and speakers can remain as off-the-shelf parts but the Arduino UNO and wifi card can likely be replaced with some custom PCB to save on cost. FInally, the design could use a rework based on human factors principles to ensure that the goals of minimal intervention and ease of use for seniors are met.</p>
+</section>
+<section id="fdm-speed-3d-printing" class="level1 page-columns page-full">
+<h1>FDM Speed 3D printing</h1>
+<p>Our project was all about designing a <strong>hobby-level FDM 3D printer</strong> that could compete with some of the best models currently on the market, such as the Bambu Lab X1C and the Creality K1 Max. We wanted to achieve <strong>fast printing speeds (around 500-600 mm/s)</strong> while still maintaining acceptable print quality. These printers are generally lightweight and moderately costly, ranging from $1000 to $2000.</p>
+<p>We began by analysing existing 3D printers to understand their key features, such as the Creality K1 max and the Bambu X1C. Based on our analysis, we were able to write a set of preliminary engineering specifications. These included a <strong>print speed of 500 mm/s</strong> and an acceleration of <strong>20000 mm/s²</strong>, a <strong>nozzle of at least 0.4mm</strong> that could reach temperatures of up to <strong>300°C</strong>, and a print bed that could reach <strong>120°C</strong>. We also wanted the printer to be able to use <strong>multiple materials (PLA, PETG, TPU, and ABS)</strong>, have a <strong>build volume of at least 220x220x220mm</strong>, and be made from standard parts where possible, with a <strong>maximum cost of $2000</strong>. We also aimed for a user-friendly design, with a <strong>minimum 5-inch display, USB ports and internet access</strong>, and a mass of <strong>less than 19kg</strong>. For a more detailed design, we created engineering specifications for the chassis, print bed, movement system and extruder. We iterated through a few candidates for each component and came up with final designs for each component.</p>
+<p>We then combined all the final component designs into a final design for our 3D printer. This included a CoreXY movement system, a bed that moves in the Z-axis and a dual extrusion system. Our design also included a rectangular heatsink, a bi-metal heat break, an elliptical heater block, and a volcano-style nozzle.Our final design is shown in figures 1 and 2 (see margin).</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="design docs/images/chassis.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: 3D printer with outer shell shown</figcaption>
+</figure>
+</div>
+</div><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="design docs/images/movement.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: 3D printer with outer shell hidden</figcaption>
+</figure>
+</div>
+</div></div>
+<p>The most complex part of our printer was the movement system. For the movement system, we considered different approaches for the X-Y and Z axes. For the X-Y movement, we implemented an existng kinematic movement system known as CoreXY (<span class="citation" data-cites="yeoh2021development">Yeoh (<a href="#ref-yeoh2021development" role="doc-biblioref">2021</a>)</span>). This involves two stationary motors and a complex belt system to move the nozzle to any point on the X-Y plane above the print bed. The motor configuration and belt path can be seen in figure 3.</p>
+<div class="custom-style">
+<p><img src="design docs/images/movement_drawing.png" class="img-fluid" alt="d"> <!-- center image --></p>
+<div class="caption text-center">
+<p>Figure 3: CAD drawing of CoreXY movement system implementation</p>
+</div>
+</div>
+<p>For Z movement, one candidate had the print bed fixed, with the movement system moving up and down. Another had the XY movement system fixed at the top and the bed moving in the Z direction. For the final design, we chose the second candidate and implemented it with two motors fixed to the bed and mounted on lead screws. This can be seen in figure 4.</p>
+<div class="custom-style">
+<p><img src="design docs/images/z-movement_drawing.png" class="img-fluid" alt="d"> <!-- center image --></p>
+<div class="caption text-center">
+<p>Figure 4: CAD drawing of z-movement system. Note the implementation with lead screws.</p>
+</div>
+</div>
+<p>For the <strong>extruder</strong>, we decided to go with a <strong>dual drive system</strong> because it provides a higher speed for feeding filament. We chose a <strong>NEMA 14 stepper motor</strong> to power it, and the housing is made of lightweight aluminium to help keep the weight down. Directly beneath the extruder, we have the <strong>heatsink</strong>, which is a wide, rectangular copper design to maximise its efficiency at dissipating heat. A <strong>low voltage cooling fan</strong> is mounted on top of the heatsink to provide airflow. The <strong>heat break</strong> is located within the heatsink and features a <strong>bi-metal design</strong>, using copper ends to aid in heat transfer and a titanium tube to minimize heat creep. Below the heat break is the <strong>heater block,</strong> which has an elliptical shape to maximise heat conductivity. This contains a <strong>custom heater cartridge with a built-in thermistor</strong>. Finally, the <strong>nozzle</strong> is a volcano-style cylindrical shape made from nickel-plated copper for its thermal properties and resistance to corrosion. Overall, the hot and cold end was designed to handle the requirements of fast filament flow, which we needed to ensure we could hit our high-speed printing goals. All of this can be seen in figure 5.</p>
+<div class="custom-style">
+<p><img src="design docs/images/hotandcoldend.png" class="img-fluid" alt="d"> <!-- center image --></p>
+<div class="caption text-center">
+<p>Figure 5: CAD drawing of the hot and cold end of the printer.</p>
+</div>
+<p>Our final design had a total estimated cost of <strong>$1290.77</strong>. This met our cost requirements and is summarised in table 9. We made cost-performance trade-offs, for example using an aluminium frame as it met the minimum requirements while being cheaper and lighter, and opting for a custom LCD screen which was cheaper than a touchscreen and still fit our performance needs.</p>
+<p>In conclusion, our final design is capable of <strong>running at print speeds of 500 mm/s</strong>, with an acceleration of <strong>20 m/s²</strong>, and has a core x-y movement system. It has a mass of <strong>14.4 kg</strong> and a build volume of <strong>220x220x220 mm</strong>. The overall dimensions are <strong>400x400x440 mm</strong>, and it includes an LCD screen, two USB-C ports, an auxiliary fan and a filament spool. The heated print bed can reach 120°C and the extruder can reach 300°C. The whole design process involved creating general specifications, and then making more specific specifications for the key components and selecting the best candidate designs.</p>
+<p>For future work, it would likely be beneficial to integrate the supports for the movement system directly into the chassis and make some type of vibration damping system.</p>
+
+
+</div>
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-glasgow2014minimal" class="csl-entry" role="listitem">
+Glasgow, Russell E, Lawrence Fisher, Lisa A Strycker, Danielle Hessler, Deborah J Toobert, Diane K King, and Tom Jacobs. 2014. <span>“Minimal Intervention Needed for Change: Definition, Use, and Value for Improving Health and Health Research.”</span> <em>Translational Behavioral Medicine</em> 4 (1): 26–33.
+</div>
+<div id="ref-irshaidat2023self" class="csl-entry" role="listitem">
+Irshaidat, Shayma, Maria Gustafsson, and Helena Norberg. 2023. <span>“Self-Reported Medication Adherence Among Older People Admitted to Hospital: A Descriptive Study.”</span> <em>Drugs-Real World Outcomes</em> 10 (1): 23–29.
+</div>
+<div id="ref-yeoh2021development" class="csl-entry" role="listitem">
+Yeoh, Xing Yuan. 2021. <span>“Development of a Small Scale Corexy Type 3D Printer.”</span> PhD thesis, UTAR.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://github.com/1gaurg1/Jansen_Mechanism_simulation">Github repository for Jansen Mechanism</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Image from Wikipedia<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/1gaurg1\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
